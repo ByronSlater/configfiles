@@ -32,12 +32,16 @@ call vundle#end()
 syntax enable
 set termguicolors
 colo onedark
+set foldmethod=indent
 
 source ~/vimconfig/funcs.vimrc
 
+au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod +x <afile> | endif | endif
+
 let mapleader=","
 
-nnoremap <Down> ddp               " remove arrow keys
+" Removing arrow keys
+nnoremap <Down> ddp
 nnoremap <Up> ddkP
 nnoremap <Left> xhP
 nnoremap <Right> xp
@@ -46,9 +50,9 @@ nnoremap <Right> xp
 set expandtab tabstop=2 shiftwidth=2
 
 " tab/tmux/window stuff
-nnoremap <Leader>v <C-w>v                  " vv to open new vertical tab
+nnoremap <Leader>v <C-w>v
 nnoremap <Leader>h <C-w>S
-nnoremap <C-j> <C-w>j               " ctrl+{hjkl} to move tab directionally
+nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 noremap <C-l> <C-w>l
@@ -62,6 +66,7 @@ noremap <C-w> <Esc>:tabclose<CR>
 nnoremap <Leader>q <Esc>:bp<Enter>
 nnoremap <Leader>w :call TryCloseBuffer()<Enter>
 nnoremap <Leader>e <Esc>:bn<Enter>
+nnoremap <Space> za
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -107,3 +112,6 @@ nnoremap <Leader>y mzgg"+yG`z
 
 " force neomake to use python3
 let g:neomake_python_python_exe = 'python3'
+
+" my own snippies
+set rtp+=~/.vim/my-snippets
