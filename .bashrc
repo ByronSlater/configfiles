@@ -136,12 +136,12 @@ mc() {
 
 
 
+for al in `git config --list | grep -oP "(?<=alias\.)([^=]+)"`; do
+  alias g$al="git $al"
+done
+
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
 gitregex="(?:alias\.)([^=]+)"
-
-for al in `git config --list | grep -oP "(?<=alias\.)([^=]+)"`; do
-  alias g$al="git $al"
-done

@@ -1,7 +1,7 @@
 " ---VUNDLE BEGIN---
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'       " Installs the things
@@ -11,12 +11,11 @@ Plugin 'sheerun/vim-polyglot'       " mega language support
 Plugin 'vim-airline/vim-airline'    " neat little line on the bottom
 Plugin 'ap/vim-css-color'           " show css colors on hexes
 Plugin 'tomtom/tcomment_vim'        " comment lines
-Plugin 'SirVer/ultisnips'           " snippet support (works w ycm)
 Plugin 'jceb/emmet.snippets'        " emmet snippies for html
 Plugin 'honza/vim-snippets'         " extra snippies
-Plugin 'Valloric/YouCompleteMe'     " radical ycm, autocomplete thing
 Plugin 'hail2u/vim-css3-syntax'     " css3 syntax highlighting
 Plugin 'othree/csscomplete.vim'     " some more css support
+Plugin 'neoclide/coc.nvim'
 Plugin 'tpope/vim-endwise'          " 'end's things in ruby
 Plugin 'jiangmiao/auto-pairs'       " auto pair brackets n dat
 Plugin 'w0ng/vim-hybrid'            " another color scheme
@@ -34,7 +33,7 @@ set termguicolors
 colo onedark
 set foldmethod=indent
 
-source ~/vimconfig/funcs.vimrc
+source ~/configfiles/funcs.vimrc
 
 au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod +x <afile> | endif | endif
 
@@ -67,15 +66,6 @@ nnoremap <Leader>q <Esc>:bp<Enter>
 nnoremap <Leader>w :call TryCloseBuffer()<Enter>
 nnoremap <Leader>e <Esc>:bn<Enter>
 nnoremap <Space> za
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-
-" YouCompleteMe
-let g:ycm_key_list_select_completion=['<C-n>']
-let g:ycm_key_list_previous_completion=['<C-p>']
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
